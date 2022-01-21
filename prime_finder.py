@@ -49,24 +49,17 @@ def prime_finder(n):
   #########CODE#########
   if n < 2:
     return "There are no prime numbers in that range."
-  elif n <= 11:
+  elif n <= 5:
     if n == 2:
       outgoing_primes += [2]     
     if n == 3 or n == 4:
       outgoing_primes += 2, 3
-    if n == 5 or n == 6:
+    if n == 5:
       outgoing_primes += 2, 3, 5  
-    if n == 7 or n == 8 or n == 9 or n == 10:
-      outgoing_primes += 2, 3, 5, 7    
-    if n == 11:
-      outgoing_primes += 2, 3, 5, 7, 11
-  elif n >= 12:
+  elif n > 5:
     outgoing_primes += [2, 3, 5]
     populator(n)
     while outgoing_primes[-1] > n:
       popper(outgoing_primes, n)
     
   return outgoing_primes
-
-
-print(prime_finder(11))
