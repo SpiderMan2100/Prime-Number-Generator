@@ -7,37 +7,30 @@ def prime_finder(n):
 
   # 6K +- 1 Theory Populator
   def populator(n):   
-    pointer = 0
-    while n > pointer:
-      for number in range(1, n):
-        temp_no = (6*number)
-        lo_hi = [(temp_no - 1), (temp_no + 1)]
-        lo = lo_hi[0]
-        hi = lo_hi[1]
-        pointer = hi
-        lo_hi_tester(lo, hi)
-        if pointer >= n:
-          break
+    for number in range(1, n):
+      temp_no = (6*number)
+      lo_hi = [(temp_no - 1), (temp_no + 1)]
+      lo = lo_hi[0]
+      hi = lo_hi[1]
+      lo_hi_tester(lo, hi)
+      if hi >= n:
+        break
 
   # pass/fail prime number tester
   def lo_hi_tester(lo, hi):
     # to test low input value
     lo_test = 0
-
     for prime in outgoing_primes:
       if lo % prime == 0:
-          lo_test += 1
-      
+          lo_test += 1    
     if lo_test == 0:
         outgoing_primes.append(lo)
 
     # to test high input values
     hi_test = 0
-
     for prime in outgoing_primes:
       if hi % prime == 0:
-          hi_test += 1
-      
+          hi_test += 1   
     if hi_test == 0:
         outgoing_primes.append(hi)
 
@@ -51,7 +44,7 @@ def prime_finder(n):
     return "There are no prime numbers in that range."
   elif n == 2:
     outgoing_primes += [2]     
-  elif n == 3 or n == 4:
+  elif n < 5:
     outgoing_primes += 2, 3
   else:
     outgoing_primes += [2, 3, 5]
